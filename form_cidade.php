@@ -229,86 +229,6 @@
             }); 
 
             // para alterar o email  
-			 $(document).on("click",".sexo",function(){    
-                
-                td= $(this);
-                sexo= td.html();
-                sexo_input = "<input type='radio' class='sexo_alterar' name='sexo' value= 'M' /> M";
-				sexo_input += "<input type='radio' class='sexo_alterar' name='sexo' value= 'F' /> F";
-				td.html(sexo_input);
-				if(sexo=="M"){
-					$(".alterar_sexo[value='M']").prop("checked",false);
-					$(".alterar_sexo[value='F']").prop("checked",true);
-				td.attr("class","sexo_alterar");
-				
-				
-            $(document).on("blur",".sexo_alterar",function(){    
-                td=$(this);
-                id_linha= $(this).closest("tr").find("button").val();
-                $.ajax({
-                    url:"alterar_coluna.php",
-                    type:"post",
-                    data:{
-                            coluna:'sexo',
-                            valor:$(".alterar_sexo:checked").val(),
-                            id:id_linha
-                         },
-                    success: function()
-                    {
-                        email = $(".sexo_alterar").val(),
-                        td.html(email);
-                        td.attr("class","sexo");
-                    }
-                });
-               
-            }); 
-                
-				
-				
-				
-				
-				//////// cidade /////////
-				
-				$(document).on("click",".cidade",function(){    
-                
-                td= $(this);
-				cidade= td.html();
-				select = "<select id='cidade_alterar'>";
-				select += $("select[name='cod_cidade']").html();
-				select +="</select>";
-				
-				
-                td.html("select");
-				valor = $("option:contains('"+cidade+"')").val);
-				$("#cod_cidade").val(valor);
-				
-                td.attr("class","cidade_alterar");
-                
-            }); 
-
-				$(document).on("blur",".cidade_alterar",function(){    
-					td=$(this);
-					id_linha= $(this).closest("tr").find("button").val();
-					$.ajax({
-						url:"alterar_coluna.php",
-						type:"post",
-						data:{
-								coluna:'cod_cidade',
-								valor:$("#cidade_alterar").val(),
-								id:id_linha
-							},
-						success: function()
-						{
-							cod_cidade = $("#cidade_alterar").val(),
-							cidade = $("#cidade_alterar").find("option")
-							td.html(cidade);
-							td.attr("class","cidade");
-						}
-					});
-               
-				}); 			
-			
-			/////////////////////////////////////
 
             $(document).on("click",".email",function(){    
                 
@@ -376,14 +296,8 @@
                 Sexo:<input type="radio" name="sexo" value="m"> Masculino
                     <input type="radio" name="sexo" value="f"> Feminino
                 <br /><br />
-				 Cidade:<select name='cod_cidade'>
-							<option value="">::Selecione a cidade</option>
-						<?php
-						include("conexao.php");
-					
-						?>
-						<br /><br />
-
+				 Cidade:<input type = "text" name = "cidade" id = "c"/>
+                <br /><br />
                 <input type = "button" class = "btn_cadastra" value = "Cadastrar">
 
                 <br />

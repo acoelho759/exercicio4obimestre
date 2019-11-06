@@ -4,7 +4,7 @@
     $local = "localhost:3307";
     $usuario = "root";
     $senha = "usbw";
-    $bd = "ex_4bimestre";
+    $bd = "exercicio_4b";
 
     $conexao = mysqli_connect($local,$usuario,$senha,$bd) 
                     or die("ERRO");
